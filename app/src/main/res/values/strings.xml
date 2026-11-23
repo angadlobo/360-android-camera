@@ -1,0 +1,38 @@
+<resources>
+    <string name="app_name">360 Camera</string>
+    <string name="viewer_title">360 Viewer</string>
+
+    <string name="mode_dual">Front + back cameras together</string>
+    <string name="mode_single">One camera at a time (this phone can\'t run both at once)</string>
+    <string name="back_camera">Back</string>
+    <string name="front_camera">Front</string>
+
+    <string name="start">Start</string>
+    <string name="pause">Pause</string>
+    <string name="reset">Reset</string>
+    <string name="save">Save 360°</string>
+    <string name="switch_camera">Switch camera</string>
+    <string name="open">Open 360 photo</string>
+    <string name="coverage">%1$d%% of the sphere captured</string>
+
+    <string name="intro_dual">Hold the phone upright at eye level and tap Start. Slowly turn in place half a circle (180°) — the front camera fills in behind you. Then tilt up and down to fill the sky and floor.</string>
+    <string name="intro_single">Hold the phone upright and tap Start. Slowly turn a full circle, then tilt up and down. Use Switch camera to fill gaps with the selfie camera.</string>
+    <string name="status_capturing">Capturing… keep turning slowly and fill the dark areas.</string>
+    <string name="status_keep_turning">Turn toward a dark area of the map to capture more.</string>
+    <string name="status_slow_down">Too fast — slow down so photos stay sharp.</string>
+    <string name="status_done">Sphere nearly complete! Tap Save.</string>
+    <string name="status_paused">Paused.</string>
+    <string name="status_saving">Saving…</string>
+    <string name="status_saved">Saved to Pictures/Camera360.</string>
+    <string name="save_failed">Save failed: %1$s</string>
+    <string name="nothing_to_save">Capture something first.</string>
+    <string name="need_camera_permission">Camera permission is needed to take 360 photos.</string>
+    <string name="no_motion_sensor">This phone has no rotation sensor, so it can\'t build a 360 photo.</string>
+    <string name="camera_error">Camera error: %1$s</string>
+
+    <string name="motion_off">Motion: off</string>
+    <string name="motion_on">Motion: on</string>
+    <string name="share">Share</string>
+    <string name="back">Back</string>
+    <string name="load_failed">Could not open image: %1$s</string>
+</resources>
