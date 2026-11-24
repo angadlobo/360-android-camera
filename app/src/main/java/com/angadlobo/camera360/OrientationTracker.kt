@@ -24,7 +24,7 @@ class OrientationTracker(context: Context) : SensorEventListener {
 
     val isAvailable: Boolean get() = rotationSensor != null
 
-    private val historySize = 64
+    private val historySize = 256 // ~1 s at the fastest sensor rate
     private val times = LongArray(historySize)
     private val mats = Array(historySize) { FloatArray(9) }
     private var head = 0
@@ -36,7 +36,7 @@ class OrientationTracker(context: Context) : SensorEventListener {
         private set
 
     fun start() {
-        rotationSensor?.let { sensorManager.registerListener(this, it, SensorManager.SENSOR_DELAY_GAME) }
+        rotationSensor?.let { sensorManager.registerListener(this, it, SensorManager.SENSOR_DELAY_FASTEST) }
         gyro?.let { sensorManager.registerListener(this, it, SensorManager.SENSOR_DELAY_GAME) }
     }
 
@@ -67,8 +67,8 @@ class OrientationTracker(context: Context) : SensorEventListener {
     }
 
     /**
-     * Rotation closest in time to [timestampNs]. Camera and sensor timestamps share the
-     * same clock on most phones; if they clearly don't, falls back to the latest sample.
+     * Rotation closest in time to [timestampNs] (on the elapsedRealtimeNanos clock; convert
+     * camera timestamps first). Falls back to the latest sample if nothing is close.
      */
     fun at(timestampNs: Long): FloatArray? = synchronized(lock) {
         if (count == 0) return null
@@ -79,7 +79,7 @@ class OrientationTracker(context: Context) : SensorEventListener {
             val dt = abs(times[idx] - timestampNs)
             if (dt < bestDt) { bestDt = dt; best = idx }
         }
-        val idx = if (bestDt < 150_000_000L) best else (head - 1 + historySize) % historySize
+        val idx = if (bestDt < 100_000_000L) best else (head - 1 + historySize) % historySize
         mats[idx].copyOf()
     }
 }

@@ -43,34 +43,27 @@
         android:textColor="@color/text_dim"
         android:textSize="13sp" />
 
-    <LinearLayout
+    <FrameLayout
         android:layout_width="match_parent"
         android:layout_height="0dp"
         android:layout_marginTop="8dp"
         android:layout_weight="1"
-        android:orientation="horizontal">
+        android:background="#FF000000">
 
-        <FrameLayout
-            android:id="@+id/backContainer"
-            android:layout_width="0dp"
-            android:layout_height="match_parent"
-            android:layout_marginEnd="4dp"
-            android:layout_weight="1">
-
-            <androidx.camera.view.PreviewView
-                android:id="@+id/backPreview"
-                android:layout_width="match_parent"
-                android:layout_height="match_parent" />
-
-            <TextView style="@style/CamLabel" android:text="@string/back_camera" />
-        </FrameLayout>
+        <androidx.camera.view.PreviewView
+            android:id="@+id/backPreview"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent" />
 
         <FrameLayout
             android:id="@+id/frontContainer"
-            android:layout_width="0dp"
-            android:layout_height="match_parent"
-            android:layout_marginStart="4dp"
-            android:layout_weight="1">
+            android:layout_width="96dp"
+            android:layout_height="128dp"
+            android:layout_gravity="top|end"
+            android:layout_marginTop="8dp"
+            android:layout_marginEnd="8dp"
+            android:background="@color/accent"
+            android:padding="2dp">
 
             <androidx.camera.view.PreviewView
                 android:id="@+id/frontPreview"
@@ -82,14 +75,19 @@
                 android:text="@string/front_camera"
                 android:textColor="@color/accent" />
         </FrameLayout>
-    </LinearLayout>
+
+        <com.angadlobo.camera360.GuideOverlayView
+            android:id="@+id/guideOverlay"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent" />
+    </FrameLayout>
 
     <TextView
         android:id="@+id/statusText"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_marginVertical="8dp"
-        android:minLines="3"
+        android:minLines="2"
         android:textSize="14sp" />
 
     <LinearLayout

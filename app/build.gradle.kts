@@ -11,8 +11,10 @@ android {
         applicationId = "com.angadlobo.camera360"
         minSdk = 29
         targetSdk = 35
-        versionCode = 1
-        versionName = "1.0"
+        versionCode = 2
+        versionName = "1.1"
+        // Phones are ARM; dropping x86 (emulators only) halves the size of ML Kit's native code.
+        ndk { abiFilters += listOf("arm64-v8a", "armeabi-v7a") }
     }
 
     buildTypes {
@@ -44,6 +46,9 @@ dependencies {
     implementation("androidx.camera:camera-camera2:$cameraxVersion")
     implementation("androidx.camera:camera-lifecycle:$cameraxVersion")
     implementation("androidx.camera:camera-view:$cameraxVersion")
+
+    // On-device AI: removes the person holding the phone from front-camera frames.
+    implementation("com.google.mlkit:segmentation-selfie:16.0.0-beta6")
 
     testImplementation("junit:junit:4.13.2")
 }
